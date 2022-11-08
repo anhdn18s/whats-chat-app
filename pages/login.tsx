@@ -35,7 +35,7 @@ export default function Login() {
                     Login Google
                 </Button>
                 <Button variant='outlined'>
-                    Login Fb
+                    Login Fb or github
                 </Button>
             </StyleLoginContainer>
         </StyleContainer>
