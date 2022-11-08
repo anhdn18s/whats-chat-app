@@ -34,6 +34,9 @@ export default function Login() {
                 <Button variant='outlined' onClick={signGoogle}>
                     Login Google
                 </Button>
+                <Button variant='outlined'>
+                    Login Fb
+                </Button>
             </StyleLoginContainer>
         </StyleContainer>
     )
