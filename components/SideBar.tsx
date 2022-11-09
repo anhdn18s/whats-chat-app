@@ -17,6 +17,12 @@ const StyleContainer = styled.div`
     max-width: 350px;
     overflow-y: scroll;
     border-right: 1px solid #ccc;
+    ::-webkit-scrollbar {
+    display: none;
+    }
+    -ms-overflow-style: none; 
+    scrollbar-width: none; 
+
 `
 const StyleHeader = styled.div`
     display: flex;

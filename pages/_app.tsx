@@ -1,44 +1,40 @@
 import '../styles/globals.css'
 import type { AppProps } from 'next/app'
-import { useAuthState } from 'react-firebase-hooks/auth';
-import { auth, db } from '../config/firebase';
-import { useEffect } from 'react';
-import { doc, serverTimestamp, setDoc } from 'firebase/firestore';
-import Login from './login';
+import Login from './login'
+import { useAuthState } from 'react-firebase-hooks/auth'
+import { auth, db } from '../config/firebase'
+import { useEffect } from 'react'
+import { doc, serverTimestamp, setDoc } from 'firebase/firestore'
 
-export default function App({ Component, pageProps }: AppProps) {
-  const [loggedInUser, loading, _error] = useAuthState(auth);
+function MyApp({ Component, pageProps }: AppProps) {
+  const [loggedInUser, loading, _error] = useAuthState(auth)
 
   useEffect(() => {
-    const setUserDb = async () => {
+    const setUserInDb = async () => {
       try {
         await setDoc(
-          doc(db, 'user', loggedInUser?.email as string),
+          doc(db, 'users', loggedInUser?.email as string),
           {
             email: loggedInUser?.email,
             lastSeen: serverTimestamp(),
             photoURL: loggedInUser?.photoURL
           },
-          { merge: true }
+          { merge: true } // just update what is changed
         )
       } catch (error) {
-        console.log("error", error)
+        console.log('ERROR SETTING USER INFO IN DB', error)
       }
     }
+
     if (loggedInUser) {
-      setUserDb()
-    }
-    return () => {
-      setUserDb
+      setUserInDb()
     }
   }, [loggedInUser])
 
 
-  if (loading) return <h1>Loading</h1>
-
-  if (!loggedInUser) return <Login></Login>
-
-
+  if (!loggedInUser) return <Login />
 
   return <Component {...pageProps} />
 }
+
+export default MyApp

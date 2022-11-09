@@ -8,13 +8,13 @@ import { getAuth, GoogleAuthProvider } from "firebase/auth";
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-    apiKey: "AIzaSyB4Lw7gQFjzQ4ZToBOFjcTpULEXBHxe6IA",
-    authDomain: "whats-app-a48af.firebaseapp.com",
-    projectId: "whats-app-a48af",
-    storageBucket: "whats-app-a48af.appspot.com",
-    messagingSenderId: "459089127019",
-    appId: "1:459089127019:web:dffcd29ed200392a73332e",
-    measurementId: "G-DXWXW3F464"
+    apiKey: process.env.NEXT_PUBLIC_APIKEY,
+    authDomain: process.env.NEXT_PUBLIC_AUTHDOMAIN,
+    projectId: process.env.NEXT_PUBLIC_PROJECTID,
+    storageBucket: process.env.NEXT_PUBLIC_STORAGEBUCKET,
+    messagingSenderId: process.env.NEXT_PUBLIC_MESSAGINGSENDERID,
+    appId: process.env.NEXT_PUBLIC_APPID,
+    measurementId: process.env.NEXT_PUBLIC_MEASUREMENTID,
 };
 
 // Initialize Firebase
